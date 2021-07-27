@@ -10,7 +10,7 @@ import SiteHeader from './components/SiteHeader';
 
 // apollo client
 const client = new ApolloClient({
-  url: 'http://localhost:1337/graphql',
+  uri: 'http://localhost:1337/graphql',
   cache: new InMemoryCache()
 })
 
@@ -35,7 +35,7 @@ function App() {
       </Switch>
     </div>
     </ApolloProvider>,
-    </Router>
+  </Router>
   );
 }
 

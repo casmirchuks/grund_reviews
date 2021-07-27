@@ -1,11 +1,12 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
-import { useQuery, gpl} from '@apollo/client'
+import { Link } from 'react-router-dom';
+import { useQuery, gql } from '@apollo/client';
 
-const REVIEWS = gpl`
+const review = gql`
     query GetReviews {
         reviews {
             Title,
+            Body,
             rating,
             id
         }
@@ -13,7 +14,7 @@ const REVIEWS = gpl`
 `
 
 export default function Homepage() {
-    const { loading, error, data } = useQuery(REVIEWS)
+    const { loading, error, data } = useQuery(review)
     
     if ( loading ) return <p>Loading...</p>
     if ( error ) return <p>Error :(</p>
@@ -22,7 +23,7 @@ export default function Homepage() {
 
     return (
         <div>
-            {data.reviews.map(review => (
+            {data.review.map(review => (
                 <div key={review.id}  className="review-card">
                     <div className="rating"> {review.rating}</div>
                     <h2> {review.title} </h2>
