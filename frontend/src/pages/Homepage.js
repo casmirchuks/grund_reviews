@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 
-const review = gql`
+const REVIEWS = gql`
     query GetReviews {
         reviews {
             Title,
@@ -14,7 +14,7 @@ const review = gql`
 `
 
 export default function Homepage() {
-    const { loading, error, data } = useQuery(review)
+    const { loading, error, data } = useQuery(REVIEWS)
     
     if ( loading ) return <p>Loading...</p>
     if ( error ) return <p>Error :(</p>

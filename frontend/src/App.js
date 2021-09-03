@@ -1,42 +1,23 @@
-import './index.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+@import "@fortawesome/fontawesome-free/css/all.css";
+@tailwind base;
+@tailwind components;
 
-// pages & layout imports
-import Homepage from './pages/Homepage';
-import ReviewDetails from './pages/ReviewDetails';
-import Category from './pages/Category';
-import SiteHeader from './components/SiteHeader';
-
-// apollo client
-const client = new ApolloClient({
-  uri: 'http://localhost:1337/graphql',
-  cache: new InMemoryCache()
-})
-
-function App() {
-  return (
-    <Router>
-    <ApolloProvider client={client}>   
-    <div className="App">
-      <SiteHeader />
-      <Switch>
-        <Route exact path="/">
-          <Homepage />
-        </Route>
-
-        <Route path="/details/:id">
-          <ReviewDetails />
-        </Route>
-
-        <Route path="/category/:id">
-          <Category />
-        </Route>
-      </Switch>
-    </div>
-    </ApolloProvider>,
-  </Router>
-  );
+.tooltip {
+  @apply invisible absolute;
 }
 
-export default App;
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+}
+
+@tailwind utilities;
+
+.cart {
+  width: 23rem;
+  margin-top: 1.5rem;
+  margin-left: -20rem;
+  background: white;
+  padding: 0.5rem;
+  color: black;
+  border: 1px solid black;
+}
