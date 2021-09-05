@@ -1,9 +1,8 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 import Homepage from "./pages/Homepage";
 import ReviewDetails from "./pages/ReviewDetails";
-import { Category } from './pages/Category'
 import { Siteheader } from './components/SiteHeader'
 
 //apollo client 
@@ -23,9 +22,6 @@ function App() {
           </Route>
           <Route  path='/details/:id'>
             <ReviewDetails />
-          </Route>
-          <Route  path='/category/:id'>
-            <Category />
           </Route>
         </div>
       </ApolloProvider>
