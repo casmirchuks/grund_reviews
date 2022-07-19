@@ -3,24 +3,24 @@ import { useParams } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 
 const REVIEW = gql`
-    query GetReview($id: ID!) {
+    query GetReview($id: id) {
         review(id: $id) {
-            Title,
-            body,
-            rating,
+            title
+            body
+            rating
             id
         }
     }
-`
+`;
 
 export default function ReviewDetails() {
     const { id } = useParams();
     const { loading, error, data } = useQuery(REVIEW, {
-        variable: { id: id }
-    })
+        variable: { id: id },
+    });
 
-    if (loading) return <p>loading...</p>
-    if (error) return <p>error...</p>
+    if (loading) return <p>loading...</p>;
+    if (error) return <p>error...</p>;
 
     return (
         <div className="review-card">
@@ -31,5 +31,5 @@ export default function ReviewDetails() {
 
             <p>{data.review.body}</p>
         </div>
-    )
+    );
 }
