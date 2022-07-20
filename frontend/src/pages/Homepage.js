@@ -20,7 +20,7 @@ export default function Homepage() {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <div>
